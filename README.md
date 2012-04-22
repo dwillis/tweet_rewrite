@@ -3,13 +3,20 @@ Yet another opinionated [sinatra app bootstrapped with
 bootstrap](https://github.com/search?langOverride=&q=sinatra-bootstrap&repo=&start_value=1&type=Repositories&utf8=%E2%9C%93).
 This one comes with haml, rspec and rack-test setup, a syncable bootstrap, a default layout and ready for heroku.
 
-## Usage
+## Setup
 
 ```sh
 $ git clone git://github.com/cldwalker/sinatra-bootstrap.git my_app
 $ cd my_app
 $ bundle install
+```
 
+App is named My::Application by default. Rename as desired (Yes, Sinatra::Application exists but
+screw top-level extensions).
+
+## Usage
+
+```sh
 # In dev
 $ bundle exec shotgun
 # In production
