@@ -11,7 +11,7 @@ module TimesDialect
     
     configure do
       @@config = YAML.load_file("config.yml") rescue nil || {}
-      TimesWire::Base.api_key = @@config['times_wire_api_key']
+      TimesWire::Base.api_key = ENV['TIMESWIRE_API_KEY'] || @@config['times_wire_api_key']
     end
     
     get '/' do
@@ -27,8 +27,8 @@ module TimesDialect
       @client = Twitter::Client.new(
           :consumer_key => ENV['CONSUMER_KEY'] || @@config['consumer_key'],
           :consumer_secret => ENV['CONSUMER_SECRET'] || @@config['consumer_secret'],
-          :oauth_token => @@config['oauth_token'],
-          :oauth_token_secret => @@config['oauth_token_secret']
+          :oauth_token => ENV['OAUTH_TOKEN'] || @@config['oauth_token'],
+          :oauth_token_secret => ENV['OAUTH_TOKEN_SECRET'] || @@config['oauth_token_secret']
         )
       @url = params[:url].split('?').first
       @item = Item.url(@url)
