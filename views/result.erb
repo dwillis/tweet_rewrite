@@ -1,0 +1,19 @@
+<html>
+<head>
+  <title>TimesDialect</title>
+</head>
+<body>
+<h3>Recent tweets about <a href="<%= @item.url %>"><%= @item.title %></a></h3>
+
+<p><%= @item.abstract %> <%= @item.byline %></p>
+
+<table class="table table-striped">
+<th>User</th><th>Text</th>
+<% @tweets.each do |tweet| %>
+  <tr><td><%= tweet.user[:screen_name] %></td><td><%= tweet.text %></td></tr>
+<% end %>
+</table>
+<p>Brought to you by <a href="https://github.com/dwillis/times_wire">TimesWire</a> and <a href="http://www.heroku.com/">Heroku</a>.</p>
+
+</body>
+</html>
