@@ -36,10 +36,15 @@ module TimesDialect
       if @url.include?('nyti.ms')
         @tw_url = Net::HTTP.get_response(URI.parse(@url))['location'].split('?').first
         @item = Item.url(@tw_url)
+        @tweets = @client.search(@url.split('?').first).statuses.reject{|i| i.text.include?(@item.title.split.first(5).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
+        tweets2 = @client.search(@tw_url.split('?').first).statuses.reject{|i| i.text.include?(@item.title.split.first(5).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
+        tweets2.each do |tweet|
+          @tweets << tweet unless @tweets.detect{|t| t.id == tweet.id}
+        end
       else
         @item = Item.url(@url)
+        @tweets = @client.search(@url.split('?').first).statuses.reject{|i| i.text.include?(@item.title.split.first(5).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
       end
-      @tweets = @client.search(@item.url).statuses.reject{|i| i.text.include?(@item.title.split.first(5).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
       erb :result
     end
     
