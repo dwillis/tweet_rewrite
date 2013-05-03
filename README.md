@@ -1,55 +1,17 @@
-## Description
-Yet another opinionated [sinatra app bootstrapped with
-bootstrap](https://github.com/search?langOverride=&q=sinatra-bootstrap&repo=&start_value=1&type=Repositories&utf8=%E2%9C%93).
-This one comes with haml, rspec and rack-test setup, a syncable bootstrap, a default layout and ready for heroku.
+## Times Dialect
+
+A Ruby app that, given the URL of a New York Times article or blog post, returns tweets from the Twitter API that do not include the article or post's title. In other words, it finds tweets that reference NYT stories but in a different way. It uses the Twitter API, Sinatra and the Times Wire gem. [See it in action](http://tweetrewrite.herokuapp.com/).
 
 ## Setup
 
-```sh
-$ git clone git://github.com/cldwalker/sinatra-bootstrap.git my_app
-$ cd my_app
-$ bundle install
-```
+You'll need to fill in the values in config.yml.example, including an API key for the New York Times [Newswire API](http://developer.nytimes.com/docs/read/times_newswire_api). If you are deploying to Heroku, use Heroku's config:add command to add these as environment values.
 
-App is named My::Application by default. Rename as desired (Yes, Sinatra::Application exists but
-screw top-level extensions).
+## Authors
+* Derek Willis, dwillis@nytimes.com
 
-## Usage
+## Copyright
 
-```sh
-# In dev
-$ bundle exec shotgun
-# In production
-$ bundle exec thin start
-# To herokuify
-$ heroku create -s cedar && heroku open
-```
-
-## Using bootstrap
-
-Bootstrap files are available under public/bootstrap/{css,img,js}. The layout, views/layout.haml,
-points to those files. If you'd like to update public/bootstrap to the latest bootstrap version:
-
-```sh
-# Only do this once
-$ rake bootstrap:init
-
-# Run this every time
-$ rake bootstrap:update
-```
-
-If lessc and uglifyjs are installed, the update task will compile the assets into a zip file. Otherwise, it'll use
-the prebuilt assets.
-
-## TODO
-* Replace git submodule with a temp clone
-* Setup airbrake with errbit
-* Setup coffeescript with testing
-* Gemify useful components as needed
-* Consider scss/less
+Copyright (c) 2013 The New York Times Company. See LICENSE for details.
 
 ## Credits
-* [twitter bootstrap](http://github.com/twitter/bootstrap) of course
-* [bootstrap rake
-  tasks](https://github.com/gudleik/twitter-bootstrapped)
-* [view layout](https://github.com/ghostandthemachine/sinatra-haml-bootstrap-fluid)
+* [sinatra bootstrap](https://github.com/cldwalker/sinatra-bootstrap) 
