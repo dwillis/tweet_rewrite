@@ -1,6 +1,6 @@
 <html>
 <head>
-  <title>TimesDialect</title>
+  <title>Tweet Rewrite</title>
 </head>
 <body>
 <h3>Recent tweets about <a href="<%= @item.url %>"><%= @item.title %></a></h3>
@@ -8,9 +8,9 @@
 <p><%= @item.abstract %> <%= @item.byline %></p>
 
 <table class="table table-striped">
-<th>User</th><th>Text</th>
+<th>User</th><th>Text</th><th>RT</th><th>Favs</th>
 <% @tweets.each do |tweet| %>
-  <tr><td><%= tweet.user[:screen_name] %></td><td><%= tweet.text %></td></tr>
+  <tr><td><a href='<%= "https://twitter.com/#{tweet.user[:screen_name]}/status/#{tweet[:id].to_s}"%> '><%= tweet.user[:screen_name] %></td><td><%= tweet.text %></td><td><%= tweet.retweet_count %></td><td><%= tweet.favorite_count %></td></tr>
 <% end %>
 </table>
 <p>Brought to you by <a href="https://github.com/nytimes/times_wire">TimesWire</a> and <a href="http://www.heroku.com/">Heroku</a>. Source on <a href="https://github.com/dwillis/times_dialect">Github</a>.</p>
