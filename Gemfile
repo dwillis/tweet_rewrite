@@ -5,7 +5,7 @@ gem 'bundler', '~> 1.1'
 gem 'thin'
 gem 'twitter'
 gem 'times_wire'
-
+gem 'bitly'
 
 group :development do
   gem 'rake'
