@@ -25,7 +25,7 @@ module TimesDialect
     post '/result' do
       @url = params[:url]
       @result_type = params[:result_type]
-      redirect "/show?url=#{@url}&result_type=@result_type"
+      redirect "/show?url=#{@url}&result_type=#{@result_type}"
     end
 
     get '/show' do
