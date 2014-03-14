@@ -10,7 +10,6 @@ gem 'bitly'
 group :development do
   gem 'rake'
   gem 'shotgun'
-  gem 'debugger'
 end
 
 group :test do
