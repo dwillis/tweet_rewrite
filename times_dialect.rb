@@ -29,7 +29,7 @@ module TimesDialect
     end
 
     get '/show' do
-      @result_type = params[:result_type] ? params[:result_type] : 'mixed'
+      @result_type = params[:result_type] ? params[:result_type].downcase : 'mixed'
       @url = params[:url].split('?').first
       @client = Twitter::Client.new(
           :consumer_key => ENV['CONSUMER_KEY'] || @@config['consumer_key'],
