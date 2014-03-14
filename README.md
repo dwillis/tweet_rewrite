@@ -11,7 +11,7 @@ You'll need to fill in the values in config.yml.example, including an API key fo
 
 ## Copyright
 
-Copyright (c) 2013 The New York Times Company. See LICENSE for details.
+Copyright (c) 2014 The New York Times Company. See LICENSE for details.
 
 ## Credits
 * [sinatra bootstrap](https://github.com/cldwalker/sinatra-bootstrap) 
