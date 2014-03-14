@@ -24,12 +24,12 @@ module TimesDialect
     
     post '/result' do
       @url = params[:url]
-      @result_type = params[:result_type]
+      @result_type = params[:result_type].downcase
       redirect "/show?url=#{@url}&result_type=#{@result_type}"
     end
 
     get '/show' do
-      @result_type = params[:result_type] ? params[:result_type].downcase : 'mixed'
+      @result_type = params[:result_type] ? params[:result_type] : 'mixed'
       @url = params[:url].split('?').first
       @client = Twitter::Client.new(
           :consumer_key => ENV['CONSUMER_KEY'] || @@config['consumer_key'],
