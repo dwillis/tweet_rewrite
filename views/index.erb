@@ -2,9 +2,30 @@
 
 <form class="form-horizontal" role="form">
   <div class="form-group">
-	<input class="form-search" name="url" method="post" action="/result">
-	<div class="checkbox"><label><input type="checkbox" name="result_type" value="recent"> Recent </label> | <label><input type="checkbox" name="result_type" value="popular"> Popular</label></div>
-  <div><button type="submit" class="btn">Submit</button></div>
+    <label for="inputUrl" class="col-sm-2 control-label">URL</label>
+    <div class="col-sm-10">
+      <input type="url" class="form-control" id="url" placeholder="URL" method="post" action="/result">
+    </div>
+  <div>
+    <div class="form-group">
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="result_type" value="recent"> Recent
+          </label>
+        </div>
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" name="result_type" value="popular"> Popular
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-default">Submit</button>
+    </div>
+  </div>
 </form>
 
 <h3>What is this?</h3>
