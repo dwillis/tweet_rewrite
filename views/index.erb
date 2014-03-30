@@ -2,10 +2,8 @@
 
 <form class="form-horizontal" role="form">
   <div class="form-group">
-	<input class="form-search" method="post" action="/result">
-	<input name="url" class="input-xxlarge search-query">
-	<div class="checkbox"><label><input type="checkbox" name="result_type" value="recent"> Recent </label></div>
-	<div class="checkbox"><label><input type="checkbox" name="result_type" value="popular"> Popular</label></div>
+	<input class="form-search" name="url" method="post" action="/result">
+	<div class="checkbox"><label><input type="checkbox" name="result_type" value="recent"> Recent </label> | <label><input type="checkbox" name="result_type" value="popular"> Popular</label></div>
   <div><button type="submit" class="btn">Submit</button></div>
 </form>
 
