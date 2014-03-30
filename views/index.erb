@@ -1,9 +1,11 @@
 <h3>Submit a New York Times story url</h3>
 
-<form class="form-search" method="post" action="/result">
-<input name="url" class="input-xxlarge search-query">
-<input type="checkbox" name="result_type" value="recent"> Recent or
-<input type="checkbox" name="result_type" value="popular"> Popular 
+<form class="form-horizontal" role="form">
+  <div class="form-group">
+	<input class="form-search" method="post" action="/result">
+	<input name="url" class="input-xxlarge search-query">
+	<div class="checkbox"><label><input type="checkbox" name="result_type" value="recent"> Recent </label></div>
+	<div class="checkbox"><label><input type="checkbox" name="result_type" value="popular"> Popular</label></div>
   <div><button type="submit" class="btn">Submit</button></div>
 </form>
 
