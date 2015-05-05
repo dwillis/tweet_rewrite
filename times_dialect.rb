@@ -41,8 +41,8 @@ module TimesDialect
       if @url.include?('nyti.ms')
         @tw_url = Net::HTTP.get_response(URI.parse(@url))['location'].split('?').first
         @item = Item.url(@tw_url)
-        @tweets = @client.search(@url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
-        tweets2 = @client.search(@tw_url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
+        @tweets = @client.search(@url.split('?').first, :result_type => @result_type).reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
+        tweets2 = @client.search(@tw_url.split('?').first, :result_type => @result_type).reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
         tweets2.each do |tweet|
           @tweets << tweet unless @tweets.detect{|t| t.id == tweet.id}
         end
@@ -53,8 +53,8 @@ module TimesDialect
         rescue
           @item = MetaInspector.new(@url)
         end
-        @tweets = @client.search(@url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
-        tweets2 = @client.search(short_url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
+        @tweets = @client.search(@url.split('?').first, :result_type => @result_type).reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
+        tweets2 = @client.search(short_url.split('?').first, :result_type => @result_type).reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
         tweets2.each do |tweet|
           @tweets << tweet unless @tweets.detect{|t| t.id == tweet.id}
         end
