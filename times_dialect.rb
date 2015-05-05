@@ -31,7 +31,7 @@ module TimesDialect
     get '/show' do
       @result_type = params[:result_type].downcase
       @url = params[:url].split('?').first
-      @client = Twitter::Client.new(
+      @client = Twitter::REST::Client.new(
           :consumer_key => ENV['CONSUMER_KEY'] || @@config['consumer_key'],
           :consumer_secret => ENV['CONSUMER_SECRET'] || @@config['consumer_secret'],
           :oauth_token => ENV['OAUTH_TOKEN'] || @@config['oauth_token'],
