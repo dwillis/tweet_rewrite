@@ -48,8 +48,11 @@ module TimesDialect
         end
       else
         short_url = @bitly.shorten(@url).short_url
-        @item = Item.url(@url)
-        @item = MetaInspector.new(@url) if not item
+        begin
+          @item = Item.url(@url)
+        rescue
+          @item = MetaInspector.new(@url)
+        end
         @tweets = @client.search(@url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
         tweets2 = @client.search(short_url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
         tweets2.each do |tweet|
