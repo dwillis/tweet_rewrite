@@ -6,6 +6,7 @@ require 'rubygems'
 require 'twitter'
 require 'times_wire'
 require 'bitly'
+require 'metainspector'
 include TimesWire
 Bundler.require(:default, (ENV['RACK_ENV'] || :development).to_sym)
 
