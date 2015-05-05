@@ -7,6 +7,7 @@ gem 'thin'
 gem 'twitter'
 gem 'times_wire'
 gem 'bitly'
+gem 'metainspector'
 
 group :development do
   gem 'rake'
