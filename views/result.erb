@@ -1,7 +1,12 @@
 
 <h3>Recent tweets about <a href="<%= @item.url %>"><%= @item.title %></a></h3>
 
-<p><%= if @tw @item.abstract else @item.description end %> <%= @item.byline if @tw %></p>
+<p><% if @tw %>
+  <%= @item.abstract %>
+  <%= @item.byline %>
+  <% else %>
+  <%= @item.description %>
+  <% end %></p>
 
 <table class="table table-striped">
 <th>User</th><th>Text</th><th>RT</th><th>Favs</th>
