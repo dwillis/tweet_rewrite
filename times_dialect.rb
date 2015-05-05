@@ -11,17 +11,17 @@ Bundler.require(:default, (ENV['RACK_ENV'] || :development).to_sym)
 
 module TimesDialect
   class Application < Sinatra::Base
-    
+
     configure do
       @@config = YAML.load_file("config.yml") rescue nil || {}
       TimesWire::Base.api_key = ENV['TIMESWIRE_API_KEY'] || @@config['times_wire_api_key']
       Bitly.use_api_version_3
     end
-    
+
     get '/' do
       erb :index
     end
-    
+
     post '/result' do
       @url = params[:url]
       @result_type = params[:result_type] ? params[:result_type] : 'mixed'
@@ -49,6 +49,7 @@ module TimesDialect
       else
         short_url = @bitly.shorten(@url).short_url
         @item = Item.url(@url)
+        @item = MetaInspector.new(@url) if not item
         @tweets = @client.search(@url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
         tweets2 = @client.search(short_url.split('?').first, :result_type => @result_type).statuses.reject{|i| i.text.include?(@item.title.split.first(2).join(' '))}.reject{|i| i.text[0..1] == 'RT'}
         tweets2.each do |tweet|
@@ -57,6 +58,6 @@ module TimesDialect
       end
       erb :result
     end
-    
+
   end
 end
