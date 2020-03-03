@@ -25,7 +25,7 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
-    rack (1.4.1)
+    rack (1.6.13)
     rack-protection (1.2.0)
       rack
     rack-test (0.6.1)
