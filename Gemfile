@@ -1,8 +1,9 @@
-ruby '1.9.3'
+ruby '2.5.5'
 source 'https://rubygems.org'
 
 gem 'sinatra', require: 'sinatra/base'
-gem 'bundler', '~> 1.1'
+gem 'bundler'
+gem 'eventmachine', '1.0.5'
 gem 'thin'
 gem 'twitter'
 gem 'times_wire'
