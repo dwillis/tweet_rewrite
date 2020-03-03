@@ -8,9 +8,11 @@ gem 'thin'
 gem 'twitter'
 gem 'times_wire'
 gem 'bitly'
+gem "rack", ">= 1.6.12"
+gem "rack-protection", ">= 1.5.5"
 
 group :development do
-  gem 'rake'
+  gem "rake", ">= 12.3.3"
   gem 'shotgun'
 end
 
